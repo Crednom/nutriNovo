@@ -1,0 +1,138 @@
+<div class="modal fade" id="doacaoModal" tabindex="-1" aria-labelledby="doacaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="doacaoModalLabel">Formulário de Doação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formDoacao" class="needs-validation" novalidate>
+                    <!-- Seção de upload de imagens -->
+                    <div class="mb-3">
+                        <label class="form-label">Imagens do Alimento</label>
+                        <div class="d-flex gap-2">
+                            <div>
+                                <input type="file" class="form-control mb-2" id="imagemAlimento" accept="image/*">
+                                <img id="previewImagem" src="../img/placeholder-image.png" 
+                                     class="img-thumbnail" 
+                                     style="width: 150px; height: 150px; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nome do Alimento -->
+                    <div class="mb-3">
+                        <label for="nomeAlimento" class="form-label">Nome do Alimento*</label>
+                        <input type="text" class="form-control" id="nomeAlimento" required>
+                    </div>
+
+                    <!-- Tipo de Alimento -->
+                    <div class="mb-3">
+                        <label for="tipoAlimento" class="form-label">Tipo de Alimento*</label>
+                        <select class="form-select" id="tipoAlimento" required>
+                            <option value="">Selecione o tipo...</option>
+                            <option value="graos">Grãos (Arroz, Feijão, etc)</option>
+                            <option value="proteinas">Proteínas (Carnes, Ovos, etc)</option>
+                            <option value="hortifruti">Hortifruti</option>
+                            <option value="laticinios">Laticínios</option>
+                            <option value="industrializados">Industrializados</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <!-- Data de Validade -->
+                        <div class="col-md-6 mb-3">
+                            <label for="dataValidade" class="form-label">Data de Validade*</label>
+                            <input type="date" class="form-control" id="dataValidade" required>
+                        </div>
+
+                        <!-- Data de Doação -->
+                        <div class="col-md-6 mb-3">
+                            <label for="dataDoacao" class="form-label">Data de Doação*</label>
+                            <input type="date" class="form-control" id="dataDoacao" required>
+                        </div>
+                    </div>
+
+                    <!-- Local de Retirada -->
+                    <div class="mb-3">
+                        <label for="localRetirada" class="form-label">Local de Retirada*</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="localRetirada" required>
+                            <button class="btn btn-outline-secondary" type="button" onclick="getLocation()">
+                                <i class="fas fa-location-dot"></i> Usar localização atual
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quantidade para Doar -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="quantidade" class="form-label">Quantidade*</label>
+                            <input type="number" class="form-control" id="quantidade" required min="0" step="0.1">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="unidadeMedida" class="form-label">Unidade de Medida*</label>
+                            <select class="form-select" id="unidadeMedida" required>
+                                <option value="">Selecione...</option>
+                                <option value="kg">Quilogramas (kg)</option>
+                                <option value="l">Litros (L)</option>
+                                <option value="un">Unidades</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Comunidade Responsável -->
+                    <div class="mb-3">
+                        <label for="comunidade" class="form-label">Comunidade Responsável</label>
+                        <select class="form-select" id="comunidade" required>
+                            <option value="">Selecione uma comunidade</option>
+                            <!-- As comunidades serão carregadas dinamicamente aqui -->
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, selecione uma comunidade.
+                        </div>
+                    </div>
+
+                    <!-- Nome do Doador -->
+                    <div class="mb-3">
+                        <label for="nomeDoador" class="form-label">Nome do Doador*</label>
+                        <input type="text" class="form-control" id="nomeDoador" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" form="formDoacao">Doar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="../js/comunidades.js"></script>
+<script>
+    // Carrega as comunidades quando o modal for aberto
+    document.getElementById('doacaoModal').addEventListener('show.bs.modal', function (event) {
+        carregarComunidades();
+    });
+
+    // Inicializar quando o modal for aberto
+    document.addEventListener('shown.bs.modal', function(event) {
+        if (event.target.id === 'doacaoModal') {
+            console.log('Modal aberto, inicializando eventos...');
+            initializeModalEvents();
+        }
+    });
+
+    // Limpar flag de inicialização quando o modal for fechado
+    document.addEventListener('hidden.bs.modal', function(event) {
+        if (event.target.id === 'doacaoModal') {
+            const form = document.getElementById('formDoacao');
+            if (form) {
+                form.removeAttribute('data-initialized');
+            }
+        }
+    });
+</script> 

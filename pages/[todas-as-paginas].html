@@ -1,0 +1,17 @@
+<!-- No final de cada página, antes do fechamento do body -->
+<div id="modal-container"></div>
+
+<script>
+// Carrega o modal
+fetch('../components/modal-doacao.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('modal-container').innerHTML = html;
+        // Inicializa os eventos após carregar o modal
+        initializeModalEvents();
+    })
+    .catch(error => console.error('Erro ao carregar o modal:', error));
+</script>
+
+<!-- Script do modal -->
+<script src="../js/modal-doacao.js"></script> 

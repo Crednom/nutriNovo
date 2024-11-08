@@ -1,0 +1,17 @@
+.landing-img-1{
+    background-image: url(../img/landing1.svg);
+    width: 500px;
+    height: 482px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.landing-img-2{
+    background-image: url(../img/Diagrama.svg);
+    width: 1200px;
+    height: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}

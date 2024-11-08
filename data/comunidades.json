@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "nome": "Comunidade São João",
+        "descricao": "Comunidade localizada na zona norte",
+        "endereco": "Rua São João, 123",
+        "telefone": "(11) 1234-5678",
+        "email": "saojoao@email.com",
+        "imagem": "../img/comunidade-rj.jpeg"
+    },
+    {
+        "id": 2,
+        "nome": "Comunidade Santa Maria",
+        "descricao": "Comunidade localizada na zona sul",
+        "endereco": "Rua Santa Maria, 456",
+        "telefone": "(11) 8765-4321",
+        "email": "santamaria@email.com",
+        "imagem": "../img/comunidade-x.svg"
+    },
+    {
+        "id": 3,
+        "nome": "Comunidade Santo Antônio",
+        "descricao": "Comunidade localizada na zona leste",
+        "endereco": "Rua Santo Antônio, 789",
+        "telefone": "(11) 2468-1357",
+        "email": "santoantonio@email.com",
+        "imagem": "../img/comunidade-y.svg"
+    }
+]

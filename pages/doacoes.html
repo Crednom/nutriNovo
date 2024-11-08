@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doações - FoodShare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/landing.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand ms-5" href="landing.html"><img src="../img/Nutri+.svg" width="180" height="45" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse row-gap-5 justify-content-end" id="navbarNav">
+              <ul class="navbar-nav d-flex align-items-center gap-5 fs-5">
+                <li class="nav-item">
+                  <a class="nav-link" href="../index.html">Página inicial</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="doacoes.html">Doações</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="comunidades.html">Comunidades</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="doadores.html">Doadores</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="informacoes_nutricionais.html">Informações nutricionais</a>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-primary btn-lg fw-semibold fs-5" data-bs-toggle="modal" data-bs-target="#doacaoModal">
+                    <i class="fa-solid fa-heart me-2"></i>Doe agora
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <!-- Espaçamento para a navbar fixa -->
+    <div class="mt-5 pt-4"></div>
+
+    <!-- Conteúdo principal -->
+    <div class="container">
+        <h2 class="text-center mb-4">Doações disponíveis</h2>
+
+        <!-- Filtros -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <input type="text" 
+                           id="searchDoacoes" 
+                           class="form-control" 
+                           placeholder="Pesquisar doações..."
+                           aria-label="Pesquisar doações">
+                    <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="tipoAlimentoFiltro">
+                    <option value="">Todos os tipos</option>
+                    <option value="perecivel">Perecível</option>
+                    <option value="naoPerecivel">Não Perecível</option>
+                    <option value="hortifruti">Hortifruti</option>
+                    <option value="graos">Grãos</option>
+                    <option value="proteinas">Proteínas</option>
+                    <option value="laticinios">Laticínios</option>
+                    <option value="industrializados">Industrializados</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="comunidadeFiltro">
+                    <option value="">Todas as comunidades</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Container das doações -->
+        <div id="doacoes-container" class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- As doações serão inseridas aqui -->
+        </div>
+
+        <!-- Botão de limpar -->
+        <div class="text-center mt-4 mb-4">
+            <button class="btn btn-danger" id="btnLimparDoacoes">
+                <i class="fas fa-trash-alt me-2"></i>Limpar todas as doações
+            </button>
+        </div>
+    </div>
+
+    <!-- Container para o modal -->
+    <div id="modal-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/comunidades.js"></script>
+    <script src="../js/doacoes.js"></script>
+    <script src="../js/modal-doacao.js"></script>
+
+    <!-- Carrega o modal -->
+    <script>
+        fetch('../components/modal-doacao.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('modal-container').innerHTML = html;
+                if (typeof initializeModalEvents === 'function') {
+                    initializeModalEvents();
+                }
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+    </script>
+</body>
+
+</html>

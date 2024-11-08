@@ -1,0 +1,95 @@
+/* Cores primárias */
+:root {
+    --primary-color: #FFD600;
+    --primary-hover: #FFDC26;
+    --text-dark: #000000;
+    --text-light: #575757;
+    --bg-light: #E4E6EA;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+/* Topo */
+
+
+.background {
+    background-image: url(../img/bg-floresta.svg);
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+.white-card h2 {
+    font-size: 40px;
+}
+
+.white-card p {
+    font-size: 24px;
+}
+
+/* Meio */
+
+.section-middle {
+    background-color: var(--primary-color);
+    height: 40vh;
+    align-content: center;
+}
+
+.step-card {
+    background-color: var(--bg-light);
+    border-radius: 5px;
+    height: 40vh;
+}
+
+/* Fim */
+
+.section-bottom {
+    overflow: hidden;
+}
+
+.section-bottom a{
+    text-decoration: none;
+}
+.section-bottom a:hover{
+    text-decoration: underline;
+}
+
+/* Alterações nas classes Bootstrap */
+
+.btn-dark {
+    background-color: black !important
+}
+
+.btn-dark:hover {
+    background-color: white !important;
+    color: black;
+    border: white 1px solid;
+}
+
+.btn-primary {
+    color: var(--text-dark) !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    color: var(--text-dark) !important;
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.yellow-link {
+    color: var(--primary-color);
+    text-decoration-color: var(--primary-color);
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+}
+
+.nav-link:hover {
+    color: var(--text-dark) !important;
+}
+
